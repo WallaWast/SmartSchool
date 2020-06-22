@@ -9,20 +9,33 @@ using SmartSchool.Api.Models;
 
 namespace SmartSchool.Api.Controllers
 {
+    /// <summary>
+    /// Controller de Aluno
+    /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AlunoController : ControllerBase
     {
         public readonly IRepository _repo;
 
         public readonly IMapper _mapper;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repo"></param>
+        /// <param name="mapper"></param>
         public AlunoController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Metodo para buscar todos os alunos
+        /// </summary>
+        /// <returns>Lista de alunos</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -32,7 +45,11 @@ namespace SmartSchool.Api.Controllers
             return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
         }
 
-        //api/aluno/byId
+        /// <summary>
+        /// Repsonsável por retornar um Aluno pelo ID
+        /// </summary>
+        /// <param name="id">Id do aluno</param>
+        /// <returns>O aluno</returns>        
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -92,12 +109,12 @@ namespace SmartSchool.Api.Controllers
 
         //Atualiza Parcialmente
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id,  AlunoDto model)
+        public IActionResult Patch(int id, AlunoDto model)
         {
             var aluno = _repo.GetAlunoById(id);
             if (aluno == null) return BadRequest("Aluno não encontrado");
 
-             _mapper.Map(model, aluno);
+            _mapper.Map(model, aluno);
 
             _repo.Update(aluno);
 

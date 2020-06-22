@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool.Api</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.Api.Controllers.AlunoController">
+            <summary>
+            Controller de Aluno
+            </summary>
+        </member>
+        <member name="M:SmartSchool.Api.Controllers.AlunoController.#ctor(SmartSchool.Api.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.Api.Controllers.AlunoController.Get">
+            <summary>
+            Metodo para buscar todos os alunos
+            </summary>
+            <returns>Lista de alunos</returns>
+        </member>
+        <member name="M:SmartSchool.Api.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Repsonsável por retornar um Aluno pelo ID
+            </summary>
+            <param name="id">Id do aluno</param>
+            <returns>O aluno</returns>        
+        </member>
+    </members>
+</doc>
